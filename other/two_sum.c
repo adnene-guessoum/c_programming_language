@@ -1,13 +1,15 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include <stdio.h>   // standard input output lib
+#include <stdlib.h>  // standard lib
 
-#define MAX_SIZE 10000
+#define MAX_SIZE 10000  // macro used as constant to define maximum size of data structure
 
+// def a hashitem
 typedef struct {
     int value;
     int index;
 } HashItem;
 
+// the hashtable we are going to use
 typedef struct {
     HashItem items[MAX_SIZE];
     int size;
