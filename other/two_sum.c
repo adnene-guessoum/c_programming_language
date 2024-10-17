@@ -15,26 +15,31 @@ typedef struct {
     int size;
 } HashTable;
 
+// initialize the hastable at size 0 (no object stored)
 void initHashTable(HashTable* ht) {
     ht->size = 0;
 }
 
+// compute hash value for given integer key
 int hash(int key) {
-    return abs(key) % MAX_SIZE;  // Simple hash function
+    return abs(key) % MAX_SIZE;  // modulo to ensure it fits, no neg indices
 }
 
+// insert key in hashtable at hashed index given key
 void insert(HashTable* ht, int key, int index) {
     int h = hash(key);
     ht->items[h].value = key;
     ht->items[h].index = index;
-    ht->size++;
+    ht->size++; // hashtable incremented by one
 }
 
+// function searching inside hashtable for a key
 int find(HashTable* ht, int key) {
     int h = hash(key);
     return (ht->items[h].value == key) ? ht->items[h].index : -1;
 }
 
+// main function to fing two number summing to target
 void twoSum(int* nums, int numsSize, int target) {
     HashTable ht;
     initHashTable(&ht);
@@ -52,6 +57,7 @@ void twoSum(int* nums, int numsSize, int target) {
     printf("No two sum solution found.\n");
 }
 
+// entrypoint of program with an example
 int main() {
     int nums[] = {2, 7, 11, 15};
     int target = 9;
